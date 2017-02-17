@@ -1,0 +1,6 @@
+D:\Google Drive\Schule 3. Klasse\pos\Projects\pinger\pinger\bin\Debug\pinger.exe.config
+D:\Google Drive\Schule 3. Klasse\pos\Projects\pinger\pinger\bin\Debug\pinger.exe
+D:\Google Drive\Schule 3. Klasse\pos\Projects\pinger\pinger\bin\Debug\pinger.pdb
+D:\Google Drive\Schule 3. Klasse\pos\Projects\pinger\pinger\obj\Debug\pinger.csprojResolveAssemblyReference.cache
+D:\Google Drive\Schule 3. Klasse\pos\Projects\pinger\pinger\obj\Debug\pinger.exe
+D:\Google Drive\Schule 3. Klasse\pos\Projects\pinger\pinger\obj\Debug\pinger.pdb

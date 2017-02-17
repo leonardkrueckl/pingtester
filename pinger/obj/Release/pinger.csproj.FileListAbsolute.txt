@@ -1,0 +1,5 @@
+D:\Google Drive\Schule 3. Klasse\pos\Projects\pinger\pinger\bin\Release\pinger.exe.config
+D:\Google Drive\Schule 3. Klasse\pos\Projects\pinger\pinger\bin\Release\pinger.exe
+D:\Google Drive\Schule 3. Klasse\pos\Projects\pinger\pinger\bin\Release\pinger.pdb
+D:\Google Drive\Schule 3. Klasse\pos\Projects\pinger\pinger\obj\Release\pinger.exe
+D:\Google Drive\Schule 3. Klasse\pos\Projects\pinger\pinger\obj\Release\pinger.pdb
