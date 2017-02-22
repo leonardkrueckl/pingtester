@@ -16,9 +16,12 @@ namespace pingerwpfv2
     public partial class MainWindow : Window
     {
         static List<int> pings = new List<int>();
+        int pinger = 0;
+        int pingadder = 0;
         static string filename = DateTime.Today.Year + "-" + DateTime.Today.Month + "-" + DateTime.Today.Day + "-" + DateTime.Now.Hour + DateTime.Now.Minute + DateTime.Now.Second + ".txt";
         StreamWriter sw = File.AppendText(filename);
         int pingmedian = 0;
+        double ping = 0;
 
 
         public MainWindow()
@@ -26,37 +29,37 @@ namespace pingerwpfv2
             InitializeComponent();
 
             DispatcherTimer timer = new DispatcherTimer();
-            timer.Interval = TimeSpan.FromSeconds(1);
+            timer.Interval = TimeSpan.FromMilliseconds(800);
             timer.Tick += timer_Tick;
             timer.Start();
         }
 
         private void timer_Tick(object sender, EventArgs e)
         {
-            double ping = PingTimeAverage("8.8.8.8");
-            if (ping != 1337420) lPing.Content = "" + ping;
-            else lPing.Content = "Connection timed out";
+            try {
+                double ping = PingTimeAverage("8.8.8.8");
+                if (ping != 1337420) lPing.Content = ping;
+                else lPing.Content = "Connection timed out";
+                sw.WriteLine(ping);
+                sw.Flush();
 
-            if (ping < 70) lPing.Foreground = Brushes.White;
-            else if (ping > 70 && ping < 100) lPing.Foreground = Brushes.Yellow;
-            else if (ping > 100) lPing.Foreground = Brushes.Red;
+                pingadder += (int)ping;
+                pinger++;
+                pingmedian = pingadder / pinger;
+                lPingMedian.Content = pingmedian;
 
-            sw.WriteLine(ping);
-            sw.Flush();
+                if (ping < 70) lPing.Foreground = Brushes.White;
+                else if (ping > 70 && ping < 100) lPing.Foreground = Brushes.Yellow;
+                else if (ping > 100) lPing.Foreground = Brushes.Red;
+                if (pingmedian < 70) lPingMedian.Foreground = Brushes.White;
+                else if (pingmedian > 70 && pingmedian < 100) lPingMedian.Foreground = Brushes.Yellow;
+                else if (pingmedian > 100) lPingMedian.Foreground = Brushes.Red;
 
-            pings.Add((int)ping);
-            for(int i = 0; i < pings.Count; i++)
-            {
-                pingmedian += pings[i];
             }
-
-            pingmedian = pingmedian / pings.Count;
-            lPingMedian.Content = pingmedian;
-
-            if (pingmedian < 70) lPingMedian.Foreground = Brushes.White;
-            else if (pingmedian > 70 && pingmedian < 100) lPingMedian.Foreground = Brushes.Yellow;
-            else if (pingmedian > 100) lPingMedian.Foreground = Brushes.Red;
-            
+            catch (Exception end)
+            {
+                MessageBox.Show(end.Message);
+            }            
         }
 
         public static double PingTimeAverage(string host)
@@ -79,11 +82,11 @@ namespace pingerwpfv2
 
         protected override void OnClosing(System.ComponentModel.CancelEventArgs e)
         {
-            //do my stuff before closing
             sw.WriteLine("------------------------------------------------------");
             sw.WriteLine(pingmedian);
+            sw.Flush();
 
-            e.Cancel = true;
+            Thread.Sleep(500);
             base.OnClosing(e);
         }
 
