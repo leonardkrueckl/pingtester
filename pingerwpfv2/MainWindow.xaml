@@ -5,15 +5,20 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:pingerwpfv2" ResizeMode="NoResize"
         mc:Ignorable="d"
-        Title="Ping Tester" Height="150" Width="150">
+        Title="Ping Tester" Height="150" Width="150" Background="Black">
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="28*"/>
-            <RowDefinition Height="93*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
-        <Label HorizontalAlignment="Center" VerticalAlignment="Center">Ping Tester</Label>
-        <Label Grid.Row="1" Name="lPing" HorizontalAlignment="Center" VerticalAlignment="Center" DataContextChanged="lPing_DataContextChanged"/>
+        <Label HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="White">Ping Tester</Label>
+        <Label Grid.Row="1" HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="White">Ping</Label>
+
+        <Label Grid.Row="1" Name="lPing" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        <Label Grid.Row="2" HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="White">Average</Label>
+        <Label Grid.Row="2" Name="lPingMedian" HorizontalAlignment="Center" VerticalAlignment="Center"/>
 
     </Grid>
 </Window>

@@ -1,0 +1,3 @@
+D:\Dokumente\GitHub\pingtester\pinger\bin\Debug\pinger.exe.config
+D:\Dokumente\GitHub\pingtester\pinger\obj\Debug\pinger.exe
+D:\Dokumente\GitHub\pingtester\pinger\obj\Debug\pinger.pdb
