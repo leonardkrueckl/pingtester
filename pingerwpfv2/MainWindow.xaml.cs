@@ -80,7 +80,10 @@ namespace pingerwpfv2
         protected override void OnClosing(System.ComponentModel.CancelEventArgs e)
         {
             //do my stuff before closing
+            sw.WriteLine("------------------------------------------------------");
+            sw.WriteLine(pingmedian);
 
+            e.Cancel = true;
             base.OnClosing(e);
         }
 
