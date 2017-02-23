@@ -1,0 +1,13 @@
+D:\Dokumente\GitHub\pingtester\pingerwpfv2\bin\Release\pingerwpfv2.exe.config
+D:\Dokumente\GitHub\pingtester\pingerwpfv2\bin\Release\pingerwpfv2.exe
+D:\Dokumente\GitHub\pingtester\pingerwpfv2\bin\Release\pingerwpfv2.pdb
+D:\Dokumente\GitHub\pingtester\pingerwpfv2\obj\Release\MainWindow.g.cs
+D:\Dokumente\GitHub\pingtester\pingerwpfv2\obj\Release\App.g.cs
+D:\Dokumente\GitHub\pingtester\pingerwpfv2\obj\Release\pingerwpfv2_MarkupCompile.cache
+D:\Dokumente\GitHub\pingtester\pingerwpfv2\obj\Release\pingerwpfv2_MarkupCompile.lref
+D:\Dokumente\GitHub\pingtester\pingerwpfv2\obj\Release\MainWindow.baml
+D:\Dokumente\GitHub\pingtester\pingerwpfv2\obj\Release\pingerwpfv2.g.resources
+D:\Dokumente\GitHub\pingtester\pingerwpfv2\obj\Release\pingerwpfv2.Properties.Resources.resources
+D:\Dokumente\GitHub\pingtester\pingerwpfv2\obj\Release\pingerwpf.csproj.GenerateResource.Cache
+D:\Dokumente\GitHub\pingtester\pingerwpfv2\obj\Release\pingerwpfv2.exe
+D:\Dokumente\GitHub\pingtester\pingerwpfv2\obj\Release\pingerwpfv2.pdb

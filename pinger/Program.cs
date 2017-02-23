@@ -30,10 +30,7 @@ namespace pinger
                     sw.Flush();
                     Thread.Sleep(800);
                 }
-            }
-
-            
-                            
+            }               
         }
         
         public static double PingTimeAverage(string host, int echoNum)
