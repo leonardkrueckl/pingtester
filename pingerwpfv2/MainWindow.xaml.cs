@@ -19,14 +19,14 @@ namespace pingerwpfv2
         DateTime begin = DateTime.Now;
         TimeSpan duration = new TimeSpan();
 
-        long pingcount = 0;
+        decimal pingcount = 0;
         long pingadder = 0;
         int pingmedian = 0;
         int pingbest = 0;
         int pingworst = 0;
         long pingjumps=0;
         long pinghigh = 0;
-        long highpingPercentage = 0;
+        decimal highpingPercentage = 0;
         int lastping =1337420;
         int timeouts=0;
     
@@ -119,8 +119,8 @@ namespace pingerwpfv2
 
             if (duration.TotalSeconds > 0 && pingjumps>0) lPingJumpsMinute.Content = "jump every " + pingPerMinute.ToString("F1") + " seconds";
 
-            highpingPercentage = 100 / pings.Count * pinghigh;
-            lPingHigh.Content = highpingPercentage;
+            highpingPercentage = 100 / pingcount * pinghigh;
+            lPingHigh.Content = highpingPercentage.ToString("F1") + "%";
         }
 
         private void bDocumentation_Click(object sender, RoutedEventArgs e)
