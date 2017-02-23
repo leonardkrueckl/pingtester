@@ -5,7 +5,7 @@ VisualStudioVersion = 14.0.24720.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "pinger", "pinger\pinger.csproj", "{57B9B5CC-384D-4007-889F-6A1171EAF3BA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "pingerwpfv2", "pingerwpfv2\pingerwpfv2.csproj", "{752EB46D-2F19-4732-9565-8769926A6776}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "pingerwpf", "pingerwpfv2\pingerwpf.csproj", "{752EB46D-2F19-4732-9565-8769926A6776}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
