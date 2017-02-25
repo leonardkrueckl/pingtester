@@ -12,17 +12,3 @@ D:\Dokumente\GitHub\pingtester\pingerwpfv2\obj\Debug\pingerwpfv2.Properties.Reso
 D:\Dokumente\GitHub\pingtester\pingerwpfv2\obj\Debug\pingerwpf.csproj.GenerateResource.Cache
 D:\Dokumente\GitHub\pingtester\pingerwpfv2\obj\Debug\pingerwpfv2.exe
 D:\Dokumente\GitHub\pingtester\pingerwpfv2\obj\Debug\pingerwpfv2.pdb
-C:\Users\Leonard Krückl\Documents\GitHub\pingtester\pingerwpfv2\bin\Debug\pingerwpfv2.exe.config
-C:\Users\Leonard Krückl\Documents\GitHub\pingtester\pingerwpfv2\bin\Debug\pingerwpfv2.exe
-C:\Users\Leonard Krückl\Documents\GitHub\pingtester\pingerwpfv2\bin\Debug\pingerwpfv2.pdb
-C:\Users\Leonard Krückl\Documents\GitHub\pingtester\pingerwpfv2\obj\Debug\pingerwpf.csprojResolveAssemblyReference.cache
-C:\Users\Leonard Krückl\Documents\GitHub\pingtester\pingerwpfv2\obj\Debug\MainWindow.g.cs
-C:\Users\Leonard Krückl\Documents\GitHub\pingtester\pingerwpfv2\obj\Debug\App.g.cs
-C:\Users\Leonard Krückl\Documents\GitHub\pingtester\pingerwpfv2\obj\Debug\pingerwpfv2_MarkupCompile.cache
-C:\Users\Leonard Krückl\Documents\GitHub\pingtester\pingerwpfv2\obj\Debug\pingerwpfv2_MarkupCompile.lref
-C:\Users\Leonard Krückl\Documents\GitHub\pingtester\pingerwpfv2\obj\Debug\MainWindow.baml
-C:\Users\Leonard Krückl\Documents\GitHub\pingtester\pingerwpfv2\obj\Debug\pingerwpfv2.g.resources
-C:\Users\Leonard Krückl\Documents\GitHub\pingtester\pingerwpfv2\obj\Debug\pingerwpfv2.Properties.Resources.resources
-C:\Users\Leonard Krückl\Documents\GitHub\pingtester\pingerwpfv2\obj\Debug\pingerwpf.csproj.GenerateResource.Cache
-C:\Users\Leonard Krückl\Documents\GitHub\pingtester\pingerwpfv2\obj\Debug\pingerwpfv2.exe
-C:\Users\Leonard Krückl\Documents\GitHub\pingtester\pingerwpfv2\obj\Debug\pingerwpfv2.pdb
