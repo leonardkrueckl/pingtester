@@ -11,3 +11,4 @@ D:\Dokumente\GitHub\pingtester\pingerwpfv2\obj\Release\pingerwpfv2.Properties.Re
 D:\Dokumente\GitHub\pingtester\pingerwpfv2\obj\Release\pingerwpf.csproj.GenerateResource.Cache
 D:\Dokumente\GitHub\pingtester\pingerwpfv2\obj\Release\pingerwpfv2.exe
 D:\Dokumente\GitHub\pingtester\pingerwpfv2\obj\Release\pingerwpfv2.pdb
+D:\Dokumente\GitHub\pingtester\pingerwpfv2\obj\Release\pingerwpf.csprojResolveAssemblyReference.cache

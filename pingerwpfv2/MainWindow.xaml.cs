@@ -16,6 +16,7 @@ namespace pingerwpfv2
     public partial class MainWindow : Window
     {
         static List<int> pings = new List<int>();
+        static List<int> highpings = new List<int>();
         DateTime begin = DateTime.Now;
         TimeSpan duration = new TimeSpan();
 
@@ -26,15 +27,20 @@ namespace pingerwpfv2
         int pingworst = 0;
         long pingjumps=0;
         long pinghigh = 0;
-        decimal highpingPercentage = 0;
+        double highpingPercentage = 0;
         int lastping =1337420;
         int timeouts=0;
-    
+        int highpingmedian=0;
+        float pingjumpseveryminute = 0;
+
+
 
         bool protocol=false;
         
         public MainWindow()
         {
+            this.WindowState = WindowState.Minimized;
+
             InitializeComponent();
 
             DispatcherTimer timer2 = new DispatcherTimer();
@@ -69,14 +75,18 @@ namespace pingerwpfv2
                     lPingTimeouts.Content = timeouts;
                 }
 
-                if (ping>lastping+40) 
+                if (ping>lastping+50) 
                 {
                     pingjumps++;
                 }
                 lPingJumps.Content = pingjumps;
 
-                if (ping > 90) pinghigh++;
-                Console.WriteLine(pinghigh);
+                if (ping > 90)
+                {
+                    pinghigh++;
+                    if (ping != 1337420) highpings.Add((int)ping);
+                }
+                //Console.WriteLine(pinghigh);
                 
                 if(ping!=1337420)pingadder += (long)ping;
                 pingcount++;
@@ -96,7 +106,8 @@ namespace pingerwpfv2
         private void timer2_Tick(object sender, EventArgs e)
         {
             List<int> pinglist = pings;
-            if (pinglist.IndexOf(1337420) != -1) pinglist.Remove(1337420);
+
+            while (pinglist.IndexOf(1337420) != -1) pinglist.Remove(1337420);
 
             pinglist.Sort();
             lPingBest.Content = pinglist[0];
@@ -108,6 +119,14 @@ namespace pingerwpfv2
             ChangeColorOfLabel(lPingBest, pinglist[0]);
             ChangeColorOfLabel(lPingWorst, pinglist[pinglist.Count - 1]);
 
+            for(int i = 0; i<highpings.Count; i++)
+            {
+                highpingmedian = highpingmedian + highpings[i];
+            }
+            highpingmedian = highpingmedian / highpings.Count;
+            lPingHighPingMedian.Content = highpingmedian;
+
+            
         }
 
         private void timer3_Tick(object sender, EventArgs e)
@@ -115,12 +134,19 @@ namespace pingerwpfv2
             duration = DateTime.Now.Subtract(begin);
             lDuration.Content = duration.Hours + ":" + duration.Minutes + ":" + duration.Seconds;
             
-            float pingPerMinute = (float)duration.TotalSeconds / pingjumps;
+            pingjumpseveryminute = (float)duration.TotalSeconds / pingjumps;
+            if (duration.TotalSeconds > 0 && pingjumps>0) lPingJumpsMinute.Content = "jump every " + pingjumpseveryminute.ToString("F1") + " seconds";
+            if (pingjumpseveryminute > 2700) lPingJumpsMinute.Foreground = Brushes.Green;
+            else lPingJumpsMinute.Foreground = Brushes.Yellow;
+            if(pingjumpseveryminute < 600) lPingJumpsMinute.Foreground = Brushes.Red;
 
-            if (duration.TotalSeconds > 0 && pingjumps>0) lPingJumpsMinute.Content = "jump every " + pingPerMinute.ToString("F1") + " seconds";
 
-            highpingPercentage = 100 / pingcount * pinghigh;
+            highpingPercentage =(double)(100 / pingcount * pinghigh);
             lPingHigh.Content = highpingPercentage.ToString("F1") + "%";
+
+            if (highpingPercentage < 0.6) lPingHigh.Foreground = Brushes.Green;
+            else if (highpingPercentage > 8.3) lPingHigh.Foreground = Brushes.Red;
+            else lPingHigh.Foreground = Brushes.Yellow;
         }
 
         private void bDocumentation_Click(object sender, RoutedEventArgs e)
@@ -178,6 +204,9 @@ namespace pingerwpfv2
                 sw.WriteLine("Worst: " + pingworst);
                 sw.WriteLine("Average: " + pingmedian);
                 sw.WriteLine("Jumps: " + pingjumps);
+                sw.WriteLine("1 Jump every " + pingjumpseveryminute + " seconds");
+                sw.WriteLine("Highping Percentage: " + highpingPercentage);
+                sw.WriteLine("Average Highping: " + highpingmedian);
                 sw.WriteLine("Timeouts: " + timeouts);
                 sw.WriteLine("------------------------------");
 
@@ -192,5 +221,10 @@ namespace pingerwpfv2
             base.OnClosing(e);
         }
 
+        private void bCopyBrief_Click(object sender, RoutedEventArgs e)
+        {
+            string brief = "Average: " + pingmedian + ", Worst: " + pingworst + ", Highping Percentage: " + highpingPercentage + ", Average Highping: " + highpingmedian + ", ping jump every " + pingjumpseveryminute.ToString("F1") + " second/s";
+            Clipboard.SetText(brief);
+        }
     }
 }
