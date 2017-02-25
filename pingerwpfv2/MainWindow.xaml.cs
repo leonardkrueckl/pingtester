@@ -123,7 +123,7 @@ namespace pingerwpfv2
             {
                 highpingmedian = highpingmedian + highpings[i];
             }
-            highpingmedian = highpingmedian / highpings.Count;
+            if(highpings.Count>0)highpingmedian = highpingmedian / highpings.Count;
             lPingHighPingMedian.Content = highpingmedian;
 
             
