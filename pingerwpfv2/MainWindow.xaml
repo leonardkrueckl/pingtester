@@ -1,0 +1,70 @@
+﻿<Window x:Class="pingerwpfv2.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:pingerwpfv2" ResizeMode="CanMinimize"
+        mc:Ignorable="d"
+        Title="Ping Tester" Height="350" Width="300" Background="Black">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <Label HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="White">Runtime (h:m:s)</Label>
+            <Label Grid.Column="1" Name="lDuration" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="White"/>
+
+        </Grid>
+
+        <Label Grid.Row="1" HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="White">Ping</Label>
+        <Label Grid.Row="1" Name="lPing" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+
+        <Label Grid.Row="2" HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="White">Average</Label>
+        <Label Grid.Row="2" Name="lPingMedian" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+
+        <Label Grid.Row="3" HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="White">Worst</Label>
+        <Label Grid.Row="3" Name="lPingWorst" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="Red"/>
+
+        <Label Grid.Row="4" HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="White">Best</Label>
+        <Label Grid.Row="4" Name="lPingBest" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="Green"/>
+
+
+        <Label Grid.Row="5" HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="White" >Jumps</Label>
+        <Label Grid.Row="5" Name="lPingJumps" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="White" />
+        <Label Grid.Row="6" Name="lPingJumpsMinute" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="White" />
+
+        <Label Grid.Row="7" HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="White" >Highping %</Label>
+        <Label Grid.Row="7" Name="lPingHigh" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="White" />
+
+        <Label Grid.Row="8" HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="White" >Highping Average</Label>
+        <Label Grid.Row="8" Name="lPingHighPingMedian" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="Red" />
+
+
+        <Label Grid.Row="9" HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="White" >Timeouts</Label>
+        <Label Grid.Row="9" Name="lPingTimeouts" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="White" />
+
+        <Button Grid.Row="10" Content="Documenting pings: off" Name="bDocumentation" Click="bDocumentation_Click"/>
+
+        <Button Grid.Row="11" Content="Copy brief to clipboard" Name="bCopyBrief" Click="bCopyBrief_Click"/>
+
+
+    </Grid>
+</Window>

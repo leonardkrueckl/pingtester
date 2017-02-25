@@ -11,9 +11,11 @@ namespace pinger
 {
     class Program
     {
+        static List<int> pings = new List<int>();
+        static string filename = DateTime.Today.Year + "-" + DateTime.Today.Month + "-" + DateTime.Today.Day + "-" + DateTime.Now.Hour + DateTime.Now.Minute + DateTime.Now.Second + ".txt";
+
         static void Main(string[] args)
         {
-            string filename = DateTime.Today.Year + "-" + DateTime.Today.Month + "-" + DateTime.Today.Day + "-" + DateTime.Now.Hour + DateTime.Now.Minute+ DateTime.Now.Second + ".txt";
 
             Thread.Sleep(1000);
 
@@ -24,11 +26,11 @@ namespace pinger
                     double ping = PingTimeAverage("8.8.8.8", 1);
                     Console.WriteLine(ping);
                     sw.WriteLine(ping);
+                    pings.Add((int)ping);
                     sw.Flush();
                     Thread.Sleep(800);
                 }
-            }
-                            
+            }               
         }
         
         public static double PingTimeAverage(string host, int echoNum)
@@ -47,6 +49,21 @@ namespace pinger
             }
             return totalTime / echoNum;
         }
-        
+
+        void OnProcessExit(object sender, EventArgs e)
+        {
+            int pingmedian = 0;
+            for (int i = 0; i < pings.Count; i++)
+            {
+                pingmedian += pings[i];
+            }
+            pingmedian = pingmedian / pings.Count;
+
+            using (StreamWriter sw = File.AppendText(filename))
+            {
+                sw.WriteLine("---------------------");
+                sw.WriteLine("Average Ping: " + pingmedian);
+            }
+        }
     }
 }
