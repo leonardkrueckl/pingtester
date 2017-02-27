@@ -48,7 +48,6 @@ namespace pingerwpfv2
             timer2.Tick += timer2_Tick;
             timer2.Start();
 
-
             DispatcherTimer timer = new DispatcherTimer();
             timer.Interval = TimeSpan.FromMilliseconds(800);
             timer.Tick += timer_Tick;
@@ -118,15 +117,16 @@ namespace pingerwpfv2
             
             ChangeColorOfLabel(lPingBest, pinglist[0]);
             ChangeColorOfLabel(lPingWorst, pinglist[pinglist.Count - 1]);
-
-            for(int i = 0; i<highpings.Count; i++)
+                        
+            if (highpings.Count > 0)
             {
-                highpingmedian = highpingmedian + highpings[i];
-            }
-            if(highpings.Count>0)highpingmedian = highpingmedian / highpings.Count;
-            lPingHighPingMedian.Content = highpingmedian;
-
-            
+                for (int i = 0; i < highpings.Count; i++)
+                {
+                    highpingmedian = highpingmedian + highpings[i];
+                }
+                highpingmedian = highpingmedian / highpings.Count;
+                lPingHighPingMedian.Content = highpingmedian;
+            }            
         }
 
         private void timer3_Tick(object sender, EventArgs e)
@@ -206,7 +206,8 @@ namespace pingerwpfv2
                 sw.WriteLine("Jumps: " + pingjumps);
                 sw.WriteLine("1 Jump every " + pingjumpseveryminute + " seconds");
                 sw.WriteLine("Highping Percentage: " + highpingPercentage);
-                sw.WriteLine("Average Highping: " + highpingmedian);
+                if(highpings.Count>0)sw.WriteLine("Average Highping: " + highpingmedian);
+                else sw.WriteLine("Average Highping: -");
                 sw.WriteLine("Timeouts: " + timeouts);
                 sw.WriteLine("------------------------------");
 
