@@ -5,9 +5,10 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:pingerwpfv2" ResizeMode="CanMinimize"
         mc:Ignorable="d"
-        Title="Ping Tester" Height="350" Width="300" Background="Black">
+        Title="Ping Tester" Height="375" Width="300" Background="Black">
     <Grid>
         <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="*"/>
@@ -49,7 +50,7 @@
 
         <Label Grid.Row="5" HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="White" >Jumps</Label>
         <Label Grid.Row="5" Name="lPingJumps" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="White" />
-        <Label Grid.Row="6" Name="lPingJumpsMinute" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="White" />
+        <Label Grid.Row="6" Name="lPingJumpsSecond" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="White" />
 
         <Label Grid.Row="7" HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="White" >Highping %</Label>
         <Label Grid.Row="7" Name="lPingHigh" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="White" />
@@ -57,13 +58,14 @@
         <Label Grid.Row="8" HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="White" >Highping Average</Label>
         <Label Grid.Row="8" Name="lPingHighPingMedian" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="Red" />
 
-
         <Label Grid.Row="9" HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="White" >Timeouts</Label>
         <Label Grid.Row="9" Name="lPingTimeouts" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="White" />
 
-        <Button Grid.Row="10" Content="Documenting pings: off" Name="bDocumentation" Click="bDocumentation_Click"/>
+        <Label Grid.Row="10" Name="lPingTimeoutsMinute" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="White" />
 
-        <Button Grid.Row="11" Content="Copy brief to clipboard" Name="bCopyBrief" Click="bCopyBrief_Click"/>
+        <Button Grid.Row="11" Content="Documenting pings: off" Name="bDocumentation" Click="bDocumentation_Click"/>
+
+        <Button Grid.Row="12" Content="Copy brief to clipboard" Name="bCopyBrief" Click="bCopyBrief_Click"/>
 
 
     </Grid>

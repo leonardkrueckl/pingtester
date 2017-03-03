@@ -31,8 +31,8 @@ namespace pingerwpfv2
         int lastping =1337420;
         int timeouts=0;
         int highpingmedian=0;
-        float pingjumpseveryminute = 0;
-
+        float pingjumpseverysecond = 0;
+        float timeoutseveryminute = 0;
 
 
         bool protocol=false;
@@ -99,6 +99,7 @@ namespace pingerwpfv2
             catch (Exception end)
             {
                 MessageBox.Show(end.Message);
+                
             }
         }
 
@@ -126,7 +127,13 @@ namespace pingerwpfv2
                 }
                 highpingmedian = highpingmedian / highpings.Count;
                 lPingHighPingMedian.Content = highpingmedian;
-            }            
+            }
+            
+            if(timeouts>0)
+            {
+                timeoutseveryminute = (float)(duration.TotalMinutes / timeouts);
+                lPingTimeoutsMinute.Content = "Timeout every "+ timeoutseveryminute.ToString("F1") + " minutes";
+            }          
         }
 
         private void timer3_Tick(object sender, EventArgs e)
@@ -134,11 +141,11 @@ namespace pingerwpfv2
             duration = DateTime.Now.Subtract(begin);
             lDuration.Content = duration.Hours + ":" + duration.Minutes + ":" + duration.Seconds;
             
-            pingjumpseveryminute = (float)duration.TotalSeconds / pingjumps;
-            if (duration.TotalSeconds > 0 && pingjumps>0) lPingJumpsMinute.Content = "jump every " + pingjumpseveryminute.ToString("F1") + " seconds";
-            if (pingjumpseveryminute > 2700) lPingJumpsMinute.Foreground = Brushes.Green;
-            else lPingJumpsMinute.Foreground = Brushes.Yellow;
-            if(pingjumpseveryminute < 600) lPingJumpsMinute.Foreground = Brushes.Red;
+            pingjumpseverysecond = (float)duration.TotalSeconds / pingjumps;
+            if (duration.TotalSeconds > 0 && pingjumps>0) lPingJumpsSecond.Content = "jump every " + pingjumpseverysecond.ToString("F1") + " seconds";
+            if (pingjumpseverysecond > 2700) lPingJumpsSecond.Foreground = Brushes.Green;
+            else lPingJumpsSecond.Foreground = Brushes.Yellow;
+            if(pingjumpseverysecond < 600) lPingJumpsSecond.Foreground = Brushes.Red;
 
 
             highpingPercentage =(double)(100 / pingcount * pinghigh);
@@ -204,11 +211,12 @@ namespace pingerwpfv2
                 sw.WriteLine("Worst: " + pingworst);
                 sw.WriteLine("Average: " + pingmedian);
                 sw.WriteLine("Jumps: " + pingjumps);
-                sw.WriteLine("1 Jump every " + pingjumpseveryminute + " seconds");
+                sw.WriteLine("Jump every " + pingjumpseverysecond + " seconds");
                 sw.WriteLine("Highping Percentage: " + highpingPercentage);
                 if(highpings.Count>0)sw.WriteLine("Average Highping: " + highpingmedian);
                 else sw.WriteLine("Average Highping: -");
                 sw.WriteLine("Timeouts: " + timeouts);
+                sw.WriteLine("Timeout every "+timeoutseveryminute.ToString("F1") + " minute/s");
                 sw.WriteLine("------------------------------");
 
                 for (int i = 0; i < pings.Count; i++)
@@ -224,7 +232,7 @@ namespace pingerwpfv2
 
         private void bCopyBrief_Click(object sender, RoutedEventArgs e)
         {
-            string brief = "Average: " + pingmedian + ", Worst: " + pingworst + ", Highping Percentage: " + highpingPercentage + ", Average Highping: " + highpingmedian + ", ping jump every " + pingjumpseveryminute.ToString("F1") + " second/s";
+            string brief = "Average: " + pingmedian + ", Worst: " + pingworst + ", Highping Percentage: " + highpingPercentage.ToString("F1") + "%, Average Highping: " + highpingmedian + ", ping jump every " + pingjumpseverysecond.ToString("F1") + " second/s, timeout every " + timeoutseveryminute.ToString("F1") + " minute/s";
             Clipboard.SetText(brief);
         }
     }
